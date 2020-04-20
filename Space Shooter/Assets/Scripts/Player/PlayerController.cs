@@ -29,10 +29,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private InputController inputController;
 
-    //Till Here
+    [SerializeField]
+    private Transform bulletSpawnPoint;
 
     #endregion
 
+    private WeaponFactory weaponFactory;
     #endregion
 
     #region public Vars        
@@ -49,6 +51,10 @@ public class PlayerController : MonoBehaviour
 
     public InputController InputController => inputController;
 
+    public WeaponFactory WeaponFactory => weaponFactory;
+
+    public Transform BulletSpwanPoint => bulletSpawnPoint;
+
     #endregion
 
     public float minMoveX, maxMoveX;
@@ -56,9 +62,11 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        IntializeStateMachine();
         health = new HealthHandler(PlayerProperties.playerTotalHealth);
-        health.OnDied += OnPlayerDied;      
+        health.OnDied += OnPlayerDied;
+        weaponFactory = new WeaponFactory();
+
+        IntializeStateMachine();
     }
 
     private void Start()
@@ -85,11 +93,21 @@ public class PlayerController : MonoBehaviour
         stateMachine.OnStateChanged += OnStateChange;       
         var states = new Dictionary<Type, BaseState>();
         states.Add(typeof(PlayerIdleState), new PlayerIdleState(controller: this));
+        states.Add(typeof(PlayerFireState), new PlayerFireState(controller: this));
         states.Add(typeof(PlayerMoveState), new PlayerMoveState(controller: this));
         states.Add(typeof(PlayerDeathState), new PlayerDeathState(controller: this));            
         stateMachine.SetAvailableStates(states);
        
         stateMachine.ChangeNextState(typeof(PlayerIdleState));
+        Invoke("SetFireState", 1);
+    }
+
+    /// <summary>
+    /// Set the fire state after some time, to run contineously with other state
+    /// </summary>
+    private void SetFireState()
+    {
+        stateMachine.SetContineousState(typeof(PlayerFireState));
     }
 
     /// <summary>

@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd3d410cdbb15194ba2a6373c1921fc7, type: 3}
-  m_Name: Player_Lvl_1
+  m_Script: {fileID: 11500000, guid: f38a548636171a44aa0dbfb3530b2076, type: 3}
+  m_Name: Player Bullet
   m_EditorClassIdentifier: 
-  levelNo: 1
-  playerTotalHealth: 5
   fireRate: 1
-  moveSensitivity: 10
-  bulletData: {fileID: 11400000, guid: 8d30dadda335deb4d8bbf5693f6090bf, type: 2}
+  speed: 15

@@ -8,6 +8,8 @@ using System.Linq;
 public class StateMachine : MonoBehaviour
 {
     public BaseState currentState { get; private set; }
+    public BaseState contineousState {  get; private set; }
+
     public event Action<BaseState> OnStateChanged;
 
     private Dictionary<Type, BaseState> availableState;
@@ -24,6 +26,16 @@ public class StateMachine : MonoBehaviour
         availableState = states;
     }
 
+    /// <summary>
+    /// Set the contineous state
+    /// </summary>
+    /// <param name="state">state type</param>
+    public void SetContineousState(Type state)
+    {
+        contineousState = availableState[state];
+        contineousState?.OnStateEnter();
+    }
+
     // Update is called once per frame
     /// <summary>
     /// Process the current state and set the next state if required
@@ -37,6 +49,10 @@ public class StateMachine : MonoBehaviour
         if (nextState != null)
         {
             ChangeNextState(nextState);
+        }
+        if(contineousState != null)
+        {
+            contineousState.OnStateUpdate();
         }
     }
 

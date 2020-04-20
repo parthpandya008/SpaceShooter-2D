@@ -13,4 +13,6 @@ public class PlayerData : ScriptableObject
    
     //Screen move limit   
     public float moveSensitivity;
+
+    public WeaponData bulletData;
 }

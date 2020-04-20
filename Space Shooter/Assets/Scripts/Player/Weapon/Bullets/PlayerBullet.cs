@@ -14,6 +14,7 @@ public class PlayerBullet : BaseWeapon
         Debug.Log("Player Bulllet");
         GameObject bullet = ObjectPooler.Instance.SpwanFrompool("PlayerBullet");
         bullet.transform.position = controller.BulletSpwanPoint.position;
+        bullet.transform.localEulerAngles = Vector2.zero;
         PlayerBulletObject bulletObject = bullet.GetComponent<PlayerBulletObject>();
         bulletObject.setBulletSpeed(controller.PlayerProperties.bulletData.speed);
     }

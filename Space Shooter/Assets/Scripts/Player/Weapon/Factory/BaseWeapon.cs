@@ -1,8 +1,6 @@
 ﻿
 using UnityEngine;
-/// <summary>
-/// All Weapons (Player + Enemy) Type
-/// </summary>
+
 public enum WeaponType
 {
     None,

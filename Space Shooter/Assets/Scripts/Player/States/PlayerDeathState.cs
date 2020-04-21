@@ -13,7 +13,7 @@ public class PlayerDeathState : BaseState
 
     public override void OnStateEnter()
     {
-
+        playerController.DisablePlayer();
     }
 
     public override void OnStateExit()

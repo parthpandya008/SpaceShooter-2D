@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38a548636171a44aa0dbfb3530b2076, type: 3}
   m_Name: Player Bullet
   m_EditorClassIdentifier: 
+  level: 0
   fireRate: 1
   speed: 15
+  damage: 1

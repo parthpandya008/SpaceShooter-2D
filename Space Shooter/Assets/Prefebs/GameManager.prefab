@@ -61,3 +61,10 @@ MonoBehaviour:
     prefeb: {fileID: 3928827740892644135, guid: ada4a929ce5de9241a747f3c6197809e,
       type: 3}
     size: 10
+  - tag: NormalEnemyShip
+    prefeb: {fileID: 123220760826369328, guid: badde06db0e00ef4ca47c7ac12316439, type: 3}
+    size: 5
+  - tag: EnemyBullet
+    prefeb: {fileID: 3928827740892644135, guid: 8c4d847a80cf0894282043a43d9ce302,
+      type: 3}
+    size: 5

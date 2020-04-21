@@ -13,8 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private StateMachine stateMachine;
 
-    [SerializeField]
-    private string enemyTag;
     //[SerializeField]
     //private PlayerProperties playerProperties;
 
@@ -71,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        SetMoveLimmit();
+        Invoke("SetMoveLimmit",1);
     }
 
     /// <summary>
@@ -79,10 +77,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void SetMoveLimmit()
     {       
-        minMoveX = -9;
-        maxMoveX = 9; 
-        minMoveY = -4;
-        maxMoveY = 6;
+        minMoveX = GameManager.Instance.MinX;
+        maxMoveX = GameManager.Instance.MaxX; 
+        minMoveY = GameManager.Instance.MinY;
+        maxMoveY = GameManager.Instance.MaxY;
     }
 
     /// <summary>
@@ -126,14 +124,15 @@ public class PlayerController : MonoBehaviour
     private void OnStateChange(BaseState state)
     {
         currentStateName = state.GetType().Name;
-    }
+    } 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /// <summary>
+    /// Take damage from enemy
+    /// </summary>
+    /// <param name="val">damage value</param>
+    public void TakeDamage(int val)
     {
-        if (collision.collider.tag.Equals(enemyTag))
-        {
-            health.TakeDamage(1);
-        }
+        health.TakeDamage(val);
     }
 
     /// <summary>
@@ -145,5 +144,13 @@ public class PlayerController : MonoBehaviour
         {
             stateMachine.ChangeNextState(typeof(PlayerDeathState));
         }
+    }
+
+    /// <summary>
+    /// Disable the player on death
+    /// </summary>
+    public void DisablePlayer()
+    {
+        gameObject.SetActive(false);
     }
 }

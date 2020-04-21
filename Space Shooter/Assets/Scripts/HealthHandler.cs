@@ -16,6 +16,19 @@ public class HealthHandler
         currentHealth = health;
     }
 
+    /// <summary>
+    /// Reset the health for the next object
+    /// </summary>
+    /// <param name="health"> Total Health</param>
+    public void ResetCurrentHealth(int health)
+    {
+        currentHealth = health;
+    }
+
+    /// <summary>
+    /// Take damage from opponent's weapon
+    /// </summary>
+    /// <param name="amount">damage amount</param>
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;

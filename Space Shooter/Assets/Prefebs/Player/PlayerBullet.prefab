@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2182694187112265063}
   m_Layer: 0
   m_Name: PlayerBullet
-  m_TagString: PlayerBullet
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletRigidBody: {fileID: 3928827740892644132}
+  enemyTag: Enemy
 --- !u!61 &2182694187112265063
 BoxCollider2D:
   m_ObjectHideFlags: 0

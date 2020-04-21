@@ -27,8 +27,7 @@ public class EnemyBullet : MonoBehaviour, IObjectPool
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(" collision.tag " + collision.tag);
+    {       
         //Check for player and damge it's health
         if (collision.tag.Equals(playerTag))
         {

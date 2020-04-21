@@ -181,3 +181,4 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 1441577184}
   enemyRigidBody2D: {fileID: 123220760826369340}
   PlayerTag: 
+  fireRate: 3

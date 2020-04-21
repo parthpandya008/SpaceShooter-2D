@@ -11,6 +11,8 @@ public class HealthHandler
 
     public event Action OnDied;
 
+    public event Action<int> HealthUpdate;
+
     public HealthHandler(int health)
     {
         currentHealth = health;
@@ -32,6 +34,7 @@ public class HealthHandler
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        HealthUpdate?.Invoke(currentHealth);
         if (currentHealth <= 0)
         {
             OnDie();
@@ -40,6 +43,6 @@ public class HealthHandler
 
     private void OnDie()
     {
-        OnDied();
+        OnDied?.Invoke();
     }
 }

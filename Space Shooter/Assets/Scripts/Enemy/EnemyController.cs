@@ -23,8 +23,10 @@ public class EnemyController : MonoBehaviour, IObjectPool
     [SerializeField]
     private string PlayerTag;
 
+    [SerializeField]
+    private float fireRate;
 
-    private float lastBulletTime, fireRate = 1;
+    private float lastBulletTime;
 
     #endregion
 

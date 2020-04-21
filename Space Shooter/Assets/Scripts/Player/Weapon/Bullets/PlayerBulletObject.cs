@@ -47,12 +47,12 @@ public class PlayerBulletObject : MonoBehaviour, IObjectPool
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(" collision.tag " + collision.tag);
         //Check for the enemy and damge it's health
         if (collision.tag.Equals(enemyTag))
         {
             EnemyController enemyController = collision.GetComponent<EnemyController>();
             enemyController.TakeDamage(damageValue);
+            GameManager.Instance.UpdateScore(1);
             DisableBullet();
         }
     }

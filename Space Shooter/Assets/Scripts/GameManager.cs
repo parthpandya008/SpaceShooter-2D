@@ -11,17 +11,34 @@ public class GameManager : Singleton<GameManager>
 
     #region
 
+    [SerializeField]
+    private UIManager uiManager;
+
+    [SerializeField]
+    private PlayerController playerController;
+
+    private ScoreHandler scoreHandler;
+
+    #region Get
+
     public float MinX => minX;
     public float MaxX => maxX;
     public float MinY => minY;
     public float MaxY => maxY;
 
+   
+    #endregion
 
     #endregion
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.DeleteAll();
+
         SetScreenMinMaxPoints();
+        int bestScore = PlayerPrefs.GetInt("BestScore", 0);
+        scoreHandler = new ScoreHandler(bestScore);
+        CheckBestScore();
     }
 
     // Update is called once per frame
@@ -41,7 +58,32 @@ public class GameManager : Singleton<GameManager>
         minY = leftPoint.y + 1;
         maxX = rightPoint.x - 1;
         maxY = rightPoint.y - 1;
+    }
 
-       
+    /// <summary>
+    /// To Update the score in UI
+    /// </summary>
+    public void UpdateScore(int value)
+    {
+        scoreHandler.UpdateScore(value);
+        uiManager.UpdateScore(scoreHandler.Score);
+        CheckBestScore();
+    }
+
+    private void CheckBestScore()
+    {
+        if(scoreHandler.CheckBestScore())
+        {           
+            PlayerPrefs.SetInt("BestScore", scoreHandler.BestScore);
+            uiManager.UpdateBestScore(scoreHandler.BestScore);
+        }
+    }
+
+    /// <summary>
+    /// To Update Player Healh's in UI
+    /// </summary>
+    public void UpdatePlayerHealth(int value)
+    {
+       uiManager.UpdateHealth(value);
     }
 }

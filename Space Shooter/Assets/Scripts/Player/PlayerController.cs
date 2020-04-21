@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
 
     public Transform BulletSpwanPoint => bulletSpawnPoint;
 
+    
+
     #endregion
 
     public float minMoveX, maxMoveX;
@@ -61,7 +63,9 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         health = new HealthHandler(PlayerProperties.playerTotalHealth);
+        health.HealthUpdate += OnHealthUpdate;
         health.OnDied += OnPlayerDied;
+        OnHealthUpdate(PlayerProperties.playerTotalHealth);
         weaponFactory = new WeaponFactory();
 
         IntializeStateMachine();
@@ -115,8 +119,10 @@ public class PlayerController : MonoBehaviour
     {
         stateMachine.OnStateChanged -= OnStateChange;
         health.OnDied -= OnPlayerDied;
+        health.HealthUpdate -= OnHealthUpdate;
     }
 
+    
     /// <summary>
     /// Change the current state
     /// </summary>
@@ -144,6 +150,15 @@ public class PlayerController : MonoBehaviour
         {
             stateMachine.ChangeNextState(typeof(PlayerDeathState));
         }
+    }
+
+    /// <summary>
+    /// Update Health UI
+    /// </summary>
+    /// <param name="obj">health value</param>
+    private void OnHealthUpdate(int obj)
+    {
+        GameManager.Instance.UpdatePlayerHealth(obj);
     }
 
     /// <summary>

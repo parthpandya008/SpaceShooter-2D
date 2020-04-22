@@ -9,7 +9,7 @@ public class HealthHandler
 
     public int CurrentHealth => currentHealth;
 
-    public event Action OnDied;
+    public event Action Died;
 
     public event Action<int> HealthUpdate;
 
@@ -43,6 +43,6 @@ public class HealthHandler
 
     private void OnDie()
     {
-        OnDied?.Invoke();
+        Died?.Invoke();
     }
 }

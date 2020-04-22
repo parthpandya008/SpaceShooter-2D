@@ -15,4 +15,5 @@ MonoBehaviour:
   levelNo: 1
   totalHealth: 1
   moveSpeed: 2
+  damageValue: 1
   bulletData: {fileID: 0}

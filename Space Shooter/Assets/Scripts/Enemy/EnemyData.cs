@@ -11,5 +11,7 @@ public class EnemyData : ScriptableObject
     //Screen move limit   
     public float moveSpeed;
 
+    public int damageValue;
+
     public WeaponData bulletData;
 }

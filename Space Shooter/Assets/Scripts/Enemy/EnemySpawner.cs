@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class EnemySpawner : MonoBehaviour
     private float generationRate;
     private float lastGeneratedTime;
 
+    private bool generateEnemy;
+
     private EnemyFactory enemyFactory;
     private BaseEnemy normalEnemy;
 
@@ -21,22 +24,48 @@ public class EnemySpawner : MonoBehaviour
         enemyFactory = new EnemyFactory();
         normalEnemy = enemyFactory.GetEnemy(EnemyType.Normal);
 
-        lastGeneratedTime = Time.time;
-
+        GameManager.Instance.GameStart += OnGameStart;
+        GameManager.Instance.GameEnd += OnGameEnd;
     }
 
     private void Update()
     {
-        if(Time.time > lastGeneratedTime + generationRate)
+        if(generateEnemy)
         {
-            GenerateEnemy();
-            lastGeneratedTime = Time.time;
+            if (Time.time > lastGeneratedTime + generationRate)
+            {
+                GenerateEnemy();
+                lastGeneratedTime = Time.time;
+            }
         }
+        
     }
 
     private void GenerateEnemy()
     {
         normalEnemy.Instantiate();
+    }
 
+    private void OnDestroy()
+    {
+        GameManager.Instance.GameStart -= OnGameStart;
+        GameManager.Instance.GameEnd -= OnGameEnd;
+    }
+
+    /// <summary>
+    /// Stop enemy generation on game stop
+    /// </summary>
+    private void OnGameEnd()
+    {
+        generateEnemy = false;
+    }
+
+    /// <summary>
+    /// Start enemy generation on game start
+    /// </summary>
+    private void OnGameStart()
+    {
+        generateEnemy = true;
+        lastGeneratedTime = Time.time;
     }
 }

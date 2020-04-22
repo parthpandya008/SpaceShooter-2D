@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -18,6 +17,9 @@ public class GameManager : Singleton<GameManager>
     private PlayerController playerController;
 
     private ScoreHandler scoreHandler;
+
+    public Action GameStart, GameEnd;
+
 
     #region Get
 
@@ -63,7 +65,7 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// To Update the score in UI
     /// </summary>
-    public void UpdateScore(int value)
+    public void UpdateScore(int value = 1)
     {
         scoreHandler.UpdateScore(value);
         uiManager.UpdateScore(scoreHandler.Score);
@@ -85,5 +87,22 @@ public class GameManager : Singleton<GameManager>
     public void UpdatePlayerHealth(int value)
     {
        uiManager.UpdateHealth(value);
+    }
+
+    /// <summary>
+    /// Trigger the game start event
+    /// </summary>
+    public void StartGame()
+    {
+        GameStart?.Invoke();
+        UpdateScore(0);
+    }
+
+    /// <summary>
+    /// Trigger the game over event
+    /// </summary>
+    public void EndGame()
+    {
+        GameEnd?.Invoke();
     }
 }

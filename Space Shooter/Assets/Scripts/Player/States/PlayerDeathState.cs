@@ -14,6 +14,7 @@ public class PlayerDeathState : BaseState
     public override void OnStateEnter()
     {
         playerController.DisablePlayer();
+        GameManager.Instance.EndGame();
     }
 
     public override void OnStateExit()

@@ -51,9 +51,12 @@ public class PlayerBulletObject : MonoBehaviour, IObjectPool
         if (collision.tag.Equals(enemyTag))
         {
             EnemyController enemyController = collision.GetComponent<EnemyController>();
-            enemyController.TakeDamage(damageValue);
-            GameManager.Instance.UpdateScore(1);
-            DisableBullet();
+            if(enemyController != null)
+            {
+                enemyController.TakeDamage(damageValue);
+                GameManager.Instance.UpdateScore();
+                DisableBullet();
+            }           
         }
     }
 

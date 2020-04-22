@@ -15,4 +15,5 @@ MonoBehaviour:
   levelNo: 1
   playerTotalHealth: 3
   moveSensitivity: 10
+  dammageValue: 1
   bulletData: {fileID: 11400000, guid: 8d30dadda335deb4d8bbf5693f6090bf, type: 2}

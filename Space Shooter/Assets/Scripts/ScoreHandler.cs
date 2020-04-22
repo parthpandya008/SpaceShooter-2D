@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,18 @@ public class ScoreHandler
     public ScoreHandler(int best)
     {
         bestScore = best;
+
+        GameManager.Instance.GameStart += OnGameStart;
+    }
+
+    ~ScoreHandler()
+    {
+        GameManager.Instance.GameStart -= OnGameStart;
+    }
+
+    private void OnGameStart()
+    {
+        score = 0;
     }
 
     /// <summary>

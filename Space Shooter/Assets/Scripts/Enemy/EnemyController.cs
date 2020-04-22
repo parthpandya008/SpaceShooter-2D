@@ -30,11 +30,17 @@ public class EnemyController : MonoBehaviour, IObjectPool
 
     #endregion
 
+    #region
+    public EnemyData EnemyProperties => enemyProperties;
+    #endregion
+
     private void Start()
     {
         health = new HealthHandler(enemyProperties.totalHealth);
-        health.OnDied += OnDied;
-    } 
+        health.Died += OnDied;
+
+        GameManager.Instance.GameEnd += OnGameEnd;
+    }
 
     public void OnObjectSpawn()
     {
@@ -64,7 +70,16 @@ public class EnemyController : MonoBehaviour, IObjectPool
 
     private void OnDestroy()
     {
-        health.OnDied -= OnDied;
+        health.Died -= OnDied;
+        GameManager.Instance.GameEnd -= OnGameEnd;
+    }
+
+    /// <summary>
+    /// Disable enemy on game end
+    /// </summary>
+    private void OnGameEnd()
+    {
+        DisbaleEnemy();
     }
 
     /// <summary>

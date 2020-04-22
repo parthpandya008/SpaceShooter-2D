@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         health = new HealthHandler(PlayerProperties.playerTotalHealth);
         health.HealthUpdate += OnHealthUpdate;
-        health.OnDied += OnPlayerDied;
+        health.Died += OnPlayerDied;
         OnHealthUpdate(PlayerProperties.playerTotalHealth);
         weaponFactory = new WeaponFactory();
 
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Invoke("SetMoveLimmit",1);
+        GameManager.Instance.GameStart += OnGameStart;
     }
 
     /// <summary>
@@ -98,10 +98,7 @@ public class PlayerController : MonoBehaviour
         states.Add(typeof(PlayerFireState), new PlayerFireState(controller: this));
         states.Add(typeof(PlayerMoveState), new PlayerMoveState(controller: this));
         states.Add(typeof(PlayerDeathState), new PlayerDeathState(controller: this));            
-        stateMachine.SetAvailableStates(states);
-       
-        stateMachine.ChangeNextState(typeof(PlayerIdleState));
-        Invoke("SetFireState", 1);
+        stateMachine.SetAvailableStates(states); 
     }
 
     /// <summary>
@@ -118,11 +115,24 @@ public class PlayerController : MonoBehaviour
     private void OnDestroy()
     {
         stateMachine.OnStateChanged -= OnStateChange;
-        health.OnDied -= OnPlayerDied;
+        health.Died -= OnPlayerDied;
         health.HealthUpdate -= OnHealthUpdate;
+        GameManager.Instance.GameStart -= OnGameStart;
     }
 
-    
+    /// <summary>
+    /// On Game Start Callback
+    /// </summary>
+    private void OnGameStart()
+    {
+        SetMoveLimmit();
+        gameObject.SetActive(true);
+        stateMachine.ChangeNextState(typeof(PlayerIdleState));
+        health.ResetCurrentHealth(playerProperties.playerTotalHealth);
+        OnHealthUpdate(PlayerProperties.playerTotalHealth);
+        Invoke("SetFireState", 1);
+    }
+
     /// <summary>
     /// Change the current state
     /// </summary>
@@ -159,6 +169,17 @@ public class PlayerController : MonoBehaviour
     private void OnHealthUpdate(int obj)
     {
         GameManager.Instance.UpdatePlayerHealth(obj);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        EnemyController enemyController = collision.GetComponent<EnemyController>();
+        if (enemyController != null)
+        {
+            enemyController.TakeDamage(playerProperties.dammageValue);
+            GameManager.Instance.UpdateScore();
+            TakeDamage(enemyController.EnemyProperties.damageValue);
+        }
     }
 
     /// <summary>

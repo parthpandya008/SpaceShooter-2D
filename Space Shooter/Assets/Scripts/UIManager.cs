@@ -26,7 +26,8 @@ public class UIManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.Instance.GameEnd -= OnGameEnd;
+        if(GameManager.Instance != null)
+            GameManager.Instance.GameEnd -= OnGameEnd;
     }
 
     /// <summary>

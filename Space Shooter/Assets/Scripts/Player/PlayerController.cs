@@ -117,7 +117,9 @@ public class PlayerController : MonoBehaviour
         stateMachine.OnStateChanged -= OnStateChange;
         health.Died -= OnPlayerDied;
         health.HealthUpdate -= OnHealthUpdate;
-        GameManager.Instance.GameStart -= OnGameStart;
+
+        if(GameManager.Instance != null)
+            GameManager.Instance.GameStart -= OnGameStart;
     }
 
     /// <summary>

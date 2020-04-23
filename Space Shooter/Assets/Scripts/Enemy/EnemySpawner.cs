@@ -48,8 +48,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.Instance.GameStart -= OnGameStart;
-        GameManager.Instance.GameEnd -= OnGameEnd;
+        if(GameManager.Instance != null)
+        {        
+            GameManager.Instance.GameStart -= OnGameStart;
+            GameManager.Instance.GameEnd -= OnGameEnd;
+        }
     }
 
     /// <summary>

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IObjectPool
+public class EnemyController : MonoBehaviour, IObjectPool, IEnemy
 {
     #region Custom Class Vars
 
@@ -71,7 +71,9 @@ public class EnemyController : MonoBehaviour, IObjectPool
     private void OnDestroy()
     {
         health.Died -= OnDied;
-        GameManager.Instance.GameEnd -= OnGameEnd;
+
+        if(GameManager.Instance != null)
+            GameManager.Instance.GameEnd -= OnGameEnd;
     }
 
     /// <summary>
@@ -85,12 +87,12 @@ public class EnemyController : MonoBehaviour, IObjectPool
     /// <summary>
     /// Disable enemy
     /// </summary>
-    private void DisbaleEnemy()
+    public void DisbaleEnemy()
     {
         this.gameObject.SetActive(false);
     }
 
-    private void GenerateBullet()
+    public void GenerateBullet()
     {
        GameObject bullet = ObjectPooler.Instance.SpwanFrompool("EnemyBullet");
         bullet.transform.localEulerAngles = Vector3.zero;

@@ -19,13 +19,23 @@ public class ObjectPooler : Singleton<ObjectPooler>
         foreach (Pool poo in pools)
         {
             Queue<GameObject> queue = new Queue<GameObject>();
+
+            GameObject goP = new GameObject();
+            goP.name = poo.tag + "Parent";
+           // Instantiate(goP);
+
             for (int i = 0; i < poo.size; i++)
             {
                 GameObject go = Instantiate(poo.prefeb);
                 go.SetActive(false);
                 queue.Enqueue(go);
+
+                go.transform.parent = goP.transform;
             }
             pooledDict.Add(poo.tag, queue);
+
+            
+           
         }
     }
 

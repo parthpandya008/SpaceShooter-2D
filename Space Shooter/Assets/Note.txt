@@ -1,0 +1,23 @@
+TODO Now:
+
+Power generation
+BG
+Parent object pool objects
+
+
+Game Start and Game over event
+UI: UI manager, score, button, game over, restart
+
+
+TODO After:
+Player movment in fixed update
+change state machine in fixed update
+Dynamic restriction on movement
+
+
+- FSM, object pooling,factory, interface segrigation, Liskove substitute 
+-Some minor flows in weapons organizing state
+- State machine and factory pattern can be implmented for the enemy
+- Due to time constrain  Most of the desing patterns and solid principals I have done for Player, sama can be done for enemy, enemyWeapon
+- Weapon management for Player
+- improved AI for enemy spwaing

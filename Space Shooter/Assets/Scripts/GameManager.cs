@@ -28,7 +28,7 @@ public class GameManager : Singleton<GameManager>
     public float MinY => minY;
     public float MaxY => maxY;
 
-   
+    public PlayerController PlayerController => playerController;
     #endregion
 
     #endregion

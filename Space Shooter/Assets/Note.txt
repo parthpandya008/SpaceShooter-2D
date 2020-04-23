@@ -1,8 +1,9 @@
 TODO Now:
 
 Power generation
-BG
-Parent object pool objects
+Get enemy interface for the collission in Player
+Disable collision between same layer
+Check Player and enemy collission
 
 
 Game Start and Game over event

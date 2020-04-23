@@ -30,9 +30,8 @@ public class EnemyBullet : MonoBehaviour, IObjectPool
     {       
         //Check for player and damge it's health
         if (collision.tag.Equals(playerTag))
-        {
-            PlayerController playerController = collision.GetComponent<PlayerController>();
-            playerController.TakeDamage(bulletData.damage);
+        {           
+            GameManager.Instance.PlayerController.TakeDamage(bulletData.damage);
             DisableBullet();
         }
     }

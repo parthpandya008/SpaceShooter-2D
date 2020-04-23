@@ -1,14 +1,6 @@
 ﻿
 using UnityEngine;
 
-public enum EnemyType
-{
-    None,
-    Normal,
-    MiniBoss,
-    Boss,
-    BigBoss
-}
 
 public abstract class BaseEnemy
 {

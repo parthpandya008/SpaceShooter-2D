@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IEnemy 
 {
-    void TakeDamage(int val);
-    void GenerateBullet();
+   void TakeDamage(int val);
+   void GenerateBullet();
    void DisbaleEnemy();
 }

@@ -11,6 +11,7 @@ public class PlayerBulletObject : MonoBehaviour, IObjectPool
     [SerializeField]
     private string enemyTag;
 
+
     public void OnObjectSpawn()
     {
         //Fire();
@@ -20,10 +21,17 @@ public class PlayerBulletObject : MonoBehaviour, IObjectPool
     /// </summary>
     /// <param name="speed">speed of the bullet</param>
     /// <param name="damage">damage value of the weapon</param>
-    public void setBulletSpeed(float speed, int damage = 1)
+    public void setData(float speed, int damage = 1)
     {
         bulletSpeed = speed;
         damageValue = damage;
+        Fire();
+    }
+
+    public void SetData(PlayerController controller)
+    {
+        bulletSpeed = controller.PlayerProperties.bulletData.speed;
+        damageValue = controller.PlayerProperties.bulletData.damage;
         Fire();
     }
 
@@ -47,7 +55,8 @@ public class PlayerBulletObject : MonoBehaviour, IObjectPool
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Check for the enemy and damge it's health
+        //Check for the enemy and damge it's 
+        //Debug.LogError(" Player bullet collision.tag " + collision.tag);
         if (collision.tag.Equals(enemyTag))
         {
             EnemyController enemyController = collision.GetComponent<EnemyController>();
@@ -59,6 +68,7 @@ public class PlayerBulletObject : MonoBehaviour, IObjectPool
             }           
         }
     }
+
 
     /// <summary>
     /// Disable the object

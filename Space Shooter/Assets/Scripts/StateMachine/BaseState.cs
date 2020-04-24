@@ -19,4 +19,7 @@ public abstract class BaseState
     public abstract void OnStateDestroy();
 
     public abstract Type OnStateUpdate();
+
+    public abstract Type OnStateFixedUpdate();
+
 }

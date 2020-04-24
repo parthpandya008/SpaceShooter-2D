@@ -56,6 +56,22 @@ public class StateMachine : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (currentState != null)
+        {
+            nextState = currentState.OnStateFixedUpdate();
+        }
+        if (nextState != null)
+        {
+            ChangeNextState(nextState);
+        }
+        if (contineousState != null)
+        {
+            contineousState.OnStateFixedUpdate();
+        }
+    }
+
     /// <summary>
     /// Change current state to next state
     /// </summary>

@@ -13,6 +13,8 @@ public class EnemyData : ScriptableObject
 
     public int damageValue;
 
+    public float stopPoint;
+
     public EnemyType enemyType;
 
     public WeaponData bulletData;

@@ -38,6 +38,11 @@ public class PlayerIdleState : BaseState
         return null;
     }
 
+    public override Type OnStateFixedUpdate()
+    {
+        return null;
+    }
+
     public override void OnStateDestroy()
     {
         playerController.InputController.MovementAction -= OnMove;

@@ -175,12 +175,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        EnemyController enemyController = collision.GetComponent<EnemyController>();
-        if (enemyController != null)
+        IEnemy enemy = collision.GetComponent<IEnemy>();
+        if (enemy != null)
         {
-            enemyController.TakeDamage(playerProperties.dammageValue);
+            enemy.TakeDamage(playerProperties.dammageValue);
             GameManager.Instance.UpdateScore();
-            TakeDamage(enemyController.EnemyProperties.damageValue);
+            TakeDamage(1);
         }
     }
 

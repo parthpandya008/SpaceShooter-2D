@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IObjectPool, IEnemy
+public class BossEnemyController : MonoBehaviour, IObjectPool, IEnemy
 {
     #region Custom Class Vars
 
@@ -59,8 +59,12 @@ public class EnemyController : MonoBehaviour, IObjectPool, IEnemy
     // Update is called once per frame
     private void FixedUpdate()
     {
-        Vector2 pos = enemyRigidBody2D.position + (Vector2.down * enemyProperties.moveSpeed* Time.deltaTime);
-        enemyRigidBody2D.MovePosition(pos);
+        Vector2 pos = enemyRigidBody2D.position;
+        if(pos.y > 1)
+        {
+            pos = pos + (Vector2.down * enemyProperties.moveSpeed * Time.deltaTime);
+            enemyRigidBody2D.MovePosition(pos);
+        }               
     }
 
     private void OnBecameInvisible()
@@ -97,6 +101,7 @@ public class EnemyController : MonoBehaviour, IObjectPool, IEnemy
        GameObject bullet = ObjectPooler.Instance.SpwanFrompool("EnemyBullet");
         bullet.transform.localEulerAngles = Vector3.zero;
         bullet.transform.position = bulletSpawnPoint.position;
+        bullet.transform.localScale = Vector2.one * 3;
     }
 
     /// <summary>

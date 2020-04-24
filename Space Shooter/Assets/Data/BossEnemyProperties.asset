@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ab54dc6471ba524785918350e640cfd, type: 3}
-  m_Name: Enemy Properties
+  m_Name: BossEnemyProperties
   m_EditorClassIdentifier: 
   levelNo: 1
-  totalHealth: 1
+  totalHealth: 5
   moveSpeed: 2
-  damageValue: 1
-  stopPoint: 1
-  enemyType: 1
+  damageValue: 2
+  enemyType: 3
   bulletData: {fileID: 0}

@@ -45,9 +45,9 @@ GameObject:
   - component: {fileID: 259329220}
   - component: {fileID: 259329221}
   - component: {fileID: 7853819254337470290}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerShip
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,7 +164,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStateName: 
   stateMachine: {fileID: 259329221}
-  enemyTag: 
   playerProperties: {fileID: 11400000, guid: 1fa70546afbccf0419dfe9b006d3d3c9, type: 2}
   health:
     currentHealth: 0

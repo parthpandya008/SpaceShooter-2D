@@ -31,4 +31,9 @@ public class PlayerDeathState : BaseState
     {
 
     }
+
+    public override Type OnStateFixedUpdate()
+    {
+        return null;
+    }
 }

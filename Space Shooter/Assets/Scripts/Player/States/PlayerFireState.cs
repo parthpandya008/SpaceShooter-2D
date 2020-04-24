@@ -17,7 +17,6 @@ public class PlayerFireState : BaseState
     }
 
 
-
     public override void OnStateEnter()
     {
 
@@ -36,6 +35,11 @@ public class PlayerFireState : BaseState
             previousFireTime = Time.time;
         }
         
+        return null;
+    }
+
+    public override Type OnStateFixedUpdate()
+    {
         return null;
     }
 

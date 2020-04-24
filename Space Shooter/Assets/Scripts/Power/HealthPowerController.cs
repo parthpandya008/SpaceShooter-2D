@@ -14,7 +14,6 @@ public class HealthPowerController : MonoBehaviour, IPower, IObjectPool
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.LogError(" collision.tag " + collision.tag);
         if (collision.tag.Equals("Player"))
         {
              ConsumePower(GameManager.Instance.PlayerController);            

@@ -59,10 +59,10 @@ public class PlayerBulletObject : MonoBehaviour, IObjectPool
         //Debug.LogError(" Player bullet collision.tag " + collision.tag);
         if (collision.tag.Equals(enemyTag))
         {
-            EnemyController enemyController = collision.GetComponent<EnemyController>();
-            if(enemyController != null)
+            IEnemy enemy = collision.GetComponent<IEnemy>();
+            if(enemy != null)
             {
-                enemyController.TakeDamage(damageValue);
+                enemy.TakeDamage(damageValue);
                 GameManager.Instance.UpdateScore();
                 DisableBullet();
             }           

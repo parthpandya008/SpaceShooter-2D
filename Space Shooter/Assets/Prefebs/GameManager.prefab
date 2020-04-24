@@ -70,3 +70,7 @@ MonoBehaviour:
     prefeb: {fileID: 3928827740892644135, guid: 8c4d847a80cf0894282043a43d9ce302,
       type: 3}
     size: 5
+  - tag: HealthPower
+    prefeb: {fileID: 1932680823808142347, guid: ecf084f476d4c134cac0dc53282142b0,
+      type: 3}
+    size: 3

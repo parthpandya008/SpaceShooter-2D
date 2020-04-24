@@ -11,18 +11,26 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField]
     private float generationRate;
+    [SerializeField]
+    private int generatedEnemyCount;
+    //Rate to generate different kind of enemy
+    [SerializeField]
+    private int waveLenght;
+
     private float lastGeneratedTime;
 
     private bool generateEnemy;
 
     private EnemyFactory enemyFactory;
-    private BaseEnemy normalEnemy;
+    private BaseEnemy normalEnemy, bossEnemy;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         enemyFactory = new EnemyFactory();
         normalEnemy = enemyFactory.GetEnemy(EnemyType.Normal);
+        bossEnemy = enemyFactory.GetEnemy(EnemyType.Boss);
 
         GameManager.Instance.GameStart += OnGameStart;
         GameManager.Instance.GameEnd += OnGameEnd;
@@ -36,14 +44,31 @@ public class EnemySpawner : MonoBehaviour
             {
                 GenerateEnemy();
                 lastGeneratedTime = Time.time;
-            }
+            }           
         }
         
     }
 
+    /// <summary>
+    /// Generate different enemies
+    /// </summary>
     private void GenerateEnemy()
     {
-        normalEnemy.Instantiate();
+        generatedEnemyCount++;
+        switch (currentSpwanEnemy)
+        {
+            case EnemyType.Normal:
+                normalEnemy.Instantiate();
+                break;
+            case EnemyType.Boss:
+                bossEnemy.Instantiate();
+                currentSpwanEnemy = EnemyType.Normal;
+                break;
+        }
+        if (generatedEnemyCount % waveLenght == 0)
+        {
+            currentSpwanEnemy = EnemyType.Boss;
+        }
     }
 
     private void OnDestroy()
@@ -70,5 +95,6 @@ public class EnemySpawner : MonoBehaviour
     {
         generateEnemy = true;
         lastGeneratedTime = Time.time;
+        generatedEnemyCount = 0;
     }
 }

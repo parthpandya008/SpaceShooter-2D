@@ -9,7 +9,7 @@ public class BossEnemy : BaseEnemy
     public override EnemyType Type => EnemyType.Boss;
 
     /// <summary>
-    /// Instantiate Normale enemy
+    /// Instantiate Boss enemy
     /// </summary>
     public override void Instantiate()
     {

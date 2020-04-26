@@ -6,7 +6,8 @@ using System;
 public class WeaponData : ScriptableObject
 {
     public int level;
+    public int damage;
+
     public float fireRate;
     public float speed;
-    public int damage;
 }

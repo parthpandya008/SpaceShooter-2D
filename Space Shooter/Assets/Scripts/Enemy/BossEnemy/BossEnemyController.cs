@@ -36,7 +36,7 @@ public class BossEnemyController : MonoBehaviour, IObjectPool, IEnemy
 
     #endregion
 
-    #region
+    #region Get
     public EnemyData EnemyProperties => enemyProperties;
     #endregion
 
@@ -49,6 +49,9 @@ public class BossEnemyController : MonoBehaviour, IObjectPool, IEnemy
         Invoke("DisbaleEnemy", 15);
     }
 
+    /// <summary>
+    /// Rest required properties on re spwaing
+    /// </summary>
     public void OnObjectSpawn()
     {
         health.ResetCurrentHealth(enemyProperties.totalHealth);
@@ -103,6 +106,10 @@ public class BossEnemyController : MonoBehaviour, IObjectPool, IEnemy
         this.gameObject.SetActive(false);
     }
 
+
+    /// <summary>
+    /// Generate Bullet
+    /// </summary>
     public void GenerateBullet()
     {
        GameObject bullet = ObjectPooler.Instance.SpwanFrompool("EnemyBullet");

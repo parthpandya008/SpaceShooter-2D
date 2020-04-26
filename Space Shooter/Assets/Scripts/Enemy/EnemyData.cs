@@ -7,12 +7,10 @@ public class EnemyData : ScriptableObject
 {
     public int levelNo;
     public int totalHealth; // Player's total health   
+    public int damageValue;
 
     //Screen move limit   
     public float moveSpeed;
-
-    public int damageValue;
-
     public float stopPoint;
 
     public EnemyType enemyType;

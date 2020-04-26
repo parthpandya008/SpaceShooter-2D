@@ -62,5 +62,4 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.StartGame();
         playUIPanel.SetActive(false);
     }
-
 }

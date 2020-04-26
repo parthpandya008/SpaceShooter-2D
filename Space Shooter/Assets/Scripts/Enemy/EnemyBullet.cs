@@ -16,6 +16,9 @@ public class EnemyBullet : MonoBehaviour, IObjectPool
         Fire();
     }
 
+    /// <summary>
+    /// Fire the bullet from the enemy ship
+    /// </summary>
     private void Fire()
     {
         bulletRigidBody.AddRelativeForce(Vector2.down*bulletData.speed, ForceMode2D.Impulse);

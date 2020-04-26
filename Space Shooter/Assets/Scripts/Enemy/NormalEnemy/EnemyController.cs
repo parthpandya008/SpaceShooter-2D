@@ -45,6 +45,9 @@ public class EnemyController : MonoBehaviour, IObjectPool, IEnemy
         GameManager.Instance.GameEnd += OnGameEnd;
     }
 
+    /// <summary>
+    /// Rest required properties on re spwaing
+    /// </summary>
     public void OnObjectSpawn()
     {
         health.ResetCurrentHealth(enemyProperties.totalHealth);

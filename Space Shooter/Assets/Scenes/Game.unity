@@ -281,7 +281,7 @@ MonoBehaviour:
   currentSpwanEnemy: 1
   generationRate: 2
   generatedEnemyCount: 0
-  waveLenght: 7
+  waveLenght: 10
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

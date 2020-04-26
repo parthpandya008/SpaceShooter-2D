@@ -43,12 +43,6 @@ public class GameManager : Singleton<GameManager>
         CheckBestScore();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// Set the min and max points of the screen for Player movement, enemy and power generation
     /// </summary>
@@ -72,6 +66,9 @@ public class GameManager : Singleton<GameManager>
         CheckBestScore();
     }
 
+    /// <summary>
+    /// Check for the best scrore, update it in PlayerPref and UI if required
+    /// </summary>
     private void CheckBestScore()
     {
         if(scoreHandler.CheckBestScore())

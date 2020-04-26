@@ -6,28 +6,31 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField]
-    private EnemyType currentSpwanEnemy;
-
-    [SerializeField]
-    private float generationRate;
-    [SerializeField]
-    private int generatedEnemyCount;
-    //Rate to generate different kind of enemy
+    //Wave lenght to generate the boss enemy
     [SerializeField]
     private int waveLenght;
+    [SerializeField]
+    private int generatedEnemyCount;
 
+    //Rate to generate different kind of enemy
+    [SerializeField]
+    private float generationRate;
+
+    [SerializeField]
+    private EnemyType currentSpwanEnemy;
+    
     private float lastGeneratedTime;
 
     private bool generateEnemy;
 
+    //Factory referance of enemy
     private EnemyFactory enemyFactory;
     private BaseEnemy normalEnemy, bossEnemy;
     
-
     // Start is called before the first frame update
     void Start()
     {
+        //Create instance of the different kind of the enemies
         enemyFactory = new EnemyFactory();
         normalEnemy = enemyFactory.GetEnemy(EnemyType.Normal);
         bossEnemy = enemyFactory.GetEnemy(EnemyType.Boss);

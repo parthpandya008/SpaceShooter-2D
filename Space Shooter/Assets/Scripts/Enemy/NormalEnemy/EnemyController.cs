@@ -26,6 +26,9 @@ public class EnemyController : MonoBehaviour, IObjectPool, IEnemy
     [SerializeField]
     private float fireRate;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
     private float lastBulletTime;
 
     #endregion
@@ -97,6 +100,9 @@ public class EnemyController : MonoBehaviour, IObjectPool, IEnemy
        GameObject bullet = ObjectPooler.Instance.SpwanFrompool("EnemyBullet");
         bullet.transform.localEulerAngles = Vector3.zero;
         bullet.transform.position = bulletSpawnPoint.position;
+        bullet.transform.localScale = Vector2.one;
+
+        audioSource.Play();
     }
 
     /// <summary>
@@ -110,6 +116,8 @@ public class EnemyController : MonoBehaviour, IObjectPool, IEnemy
 
     private void OnDied()
     {
+      GameObject explossion =  ObjectPooler.Instance.SpwanFrompool("EnemyExplossion");
+        explossion.transform.position = transform.position;
         DisbaleEnemy(); 
     }
 }

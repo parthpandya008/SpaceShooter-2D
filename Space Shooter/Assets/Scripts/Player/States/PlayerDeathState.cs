@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public class PlayerDeathState : BaseState
 {
@@ -15,6 +16,8 @@ public class PlayerDeathState : BaseState
     {
         playerController.DisablePlayer();
         GameManager.Instance.EndGame();
+        GameObject explossion = ObjectPooler.Instance.SpwanFrompool("PlayerExplossion");
+        explossion.transform.position = playerController.transform.position;        
     }
 
     public override void OnStateExit()
@@ -35,5 +38,10 @@ public class PlayerDeathState : BaseState
     public override Type OnStateFixedUpdate()
     {
         return null;
+    }
+
+    private void DisablePlayer()
+    {
+        
     }
 }

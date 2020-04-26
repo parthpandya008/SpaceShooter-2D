@@ -32,6 +32,8 @@ public class PlayerFireState : BaseState
         if(Time.time > previousFireTime + fireRate)
         {
             playerBullet?.Instantiate(playerController);
+            playerController.AudioSource.clip = playerController.FireAudio;
+            playerController.AudioSource.Play();
             previousFireTime = Time.time;
         }
         

@@ -26,7 +26,13 @@ public class BossEnemyController : MonoBehaviour, IObjectPool, IEnemy
     [SerializeField]
     private float fireRate;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
     private float lastBulletTime;
+
+    private int dist = 90;
+    private int start = -45;
 
     #endregion
 
@@ -40,6 +46,7 @@ public class BossEnemyController : MonoBehaviour, IObjectPool, IEnemy
         health.Died += OnDied;
 
         GameManager.Instance.GameEnd += OnGameEnd;
+        Invoke("DisbaleEnemy", 15);
     }
 
     public void OnObjectSpawn()
@@ -64,7 +71,7 @@ public class BossEnemyController : MonoBehaviour, IObjectPool, IEnemy
         {
             pos = pos + (Vector2.down * enemyProperties.moveSpeed * Time.deltaTime);
             enemyRigidBody2D.MovePosition(pos);
-        }               
+        } 
     }
 
     private void OnBecameInvisible()
@@ -113,8 +120,13 @@ public class BossEnemyController : MonoBehaviour, IObjectPool, IEnemy
         health.TakeDamage(val);
     }
 
+    /// <summary>
+    /// Exlpode boss enemy
+    /// </summary>
     private void OnDied()
     {
+        GameObject explossion = ObjectPooler.Instance.SpwanFrompool("EnemyExplossion");
+        explossion.transform.position = transform.position; ObjectPooler.Instance.SpwanFrompool("EnemyExplossion");
         DisbaleEnemy(); 
     }
 }

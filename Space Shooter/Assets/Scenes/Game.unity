@@ -663,25 +663,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4057884382170891848, guid: ddfb30170f645514595d414ea39ccc8e,
         type: 3}
-      propertyPath: pools.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4057884382170891848, guid: ddfb30170f645514595d414ea39ccc8e,
-        type: 3}
-      propertyPath: pools.Array.data[4].tag
-      value: BossEnemyShip
-      objectReference: {fileID: 0}
-    - target: {fileID: 4057884382170891848, guid: ddfb30170f645514595d414ea39ccc8e,
-        type: 3}
-      propertyPath: pools.Array.data[4].prefeb
+      propertyPath: pools.Array.data[5].prefeb
       value: 
-      objectReference: {fileID: 123220760826369328, guid: d3e5ebe2fb17ce845be3f87b610442f8,
-        type: 3}
-    - target: {fileID: 4057884382170891848, guid: ddfb30170f645514595d414ea39ccc8e,
-        type: 3}
-      propertyPath: pools.Array.data[4].size
-      value: 2
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 100012, guid: 1b07c8b43b2ca704aac4c46e07844366, type: 3}
     - target: {fileID: 4147287530308188172, guid: ddfb30170f645514595d414ea39ccc8e,
         type: 3}
       propertyPath: uiManager

@@ -33,12 +33,15 @@ public class HealthHandler
     /// <param name="amount">damage amount</param>
     public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
-        HealthUpdate?.Invoke(currentHealth);
-        if (currentHealth <= 0)
+        if(currentHealth > 0)
         {
-            OnDie();
-        }
+            currentHealth -= amount;
+            HealthUpdate?.Invoke(currentHealth);
+            if (currentHealth <= 0)
+            {
+                OnDie();
+            }
+        }       
     }
 
     private void OnDie()

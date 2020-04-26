@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform bulletSpawnPoint;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip fireAudio;
+
     #endregion
 
     private WeaponFactory weaponFactory;
@@ -53,7 +59,10 @@ public class PlayerController : MonoBehaviour
 
     public Transform BulletSpwanPoint => bulletSpawnPoint;
 
-    
+    public AudioSource AudioSource => audioSource;
+
+    public AudioClip FireAudio => fireAudio;
+
 
     #endregion
 

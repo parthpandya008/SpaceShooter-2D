@@ -15,6 +15,6 @@ public class BossEnemy : BaseEnemy
     {
        GameObject enemy = ObjectPooler.Instance.SpwanFrompool("BossEnemyShip");
         enemy.transform.localEulerAngles = Vector3.zero;
-        enemy.transform.localPosition = new Vector2(0, 8);
+        enemy.transform.localPosition = new Vector2(0, 7);
     }
 }

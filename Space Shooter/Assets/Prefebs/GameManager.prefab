@@ -74,3 +74,12 @@ MonoBehaviour:
     prefeb: {fileID: 1932680823808142347, guid: ecf084f476d4c134cac0dc53282142b0,
       type: 3}
     size: 3
+  - tag: BossEnemyShip
+    prefeb: {fileID: 123220760826369328, guid: d3e5ebe2fb17ce845be3f87b610442f8, type: 3}
+    size: 2
+  - tag: EnemyExplossion
+    prefeb: {fileID: 123220760826369328, guid: d3e5ebe2fb17ce845be3f87b610442f8, type: 3}
+    size: 5
+  - tag: PlayerExplossion
+    prefeb: {fileID: 100008, guid: 716a6d0de42cf74439655138d6f35b4b, type: 3}
+    size: 1

@@ -20,11 +20,6 @@ public class HealthPowerController : MonoBehaviour, IPower, IObjectPool
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.LogError(""+ collision.transform.tag);    
-    }
-
     public void OnObjectSpawn()
     {
         
